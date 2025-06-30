@@ -8,3 +8,17 @@ It is recommended to not use internet explorer(old browser by microsoft, now the
 
 Starting a node.js project locally 
 Step 1 . Run the command : npm init -y
+"start":"node index.js"      .......adding this in package.json and start with npm run start.
+
+
+
+Step-by-step: Ignore node_modules
+
+Create a .gitignore file (if it doesn’t already exist):
+In your root project folder (where package.json lives), create a file named:
+.gitignore
+Add this line inside .gitignore:
+node_modules/
+This tells Git to ignore the entire node_modules folder when committing.
+Save the .gitignore file.
+
