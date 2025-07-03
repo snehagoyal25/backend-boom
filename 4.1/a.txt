@@ -1,0 +1,24 @@
+ Node.js , Bun and JS Runtimes, 
+ Slides :- https://petal-estimate-4e9.notion.site/What-is-Node-js-19b54058c51f468587d8969067d498f1s          //s
+
+Node.js , bun or google chrome need to follow what ecmascript changes in it as they all uses V8 engine so they need to follow for instance promises were introduced in 2015 afterwards all of them needs to follow 
+
+It is recommended to not use internet explorer(old browser by microsoft, now they are using edge ) as it it does not uses V8 engine 
+
+
+Starting a node.js project locally 
+Step 1 . Run the command : npm init -y
+"start":"node index.js"      .......adding this in package.json and start with npm run start.
+
+
+
+Step-by-step: Ignore node_modules
+
+Create a .gitignore file (if it doesn’t already exist):
+In your root project folder (where package.json lives), create a file named:
+.gitignore
+Add this line inside .gitignore:
+node_modules/
+This tells Git to ignore the entire node_modules folder when committing.
+Save the .gitignore file.
+
