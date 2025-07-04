@@ -1,0 +1,28 @@
+1xx - Informational
+
+100 Continue – Server says: "Okay, keep going!"
+101 Switching Protocols – Client requested to switch protocols
+
+2xx - Success
+200 OK – Everything is perfect
+201 Created – Something new was made
+204 No Content – Success, but nothing to return
+
+3xx - Redirection
+301 Moved Permanently – The page has moved forever
+302 Found – Temporary move
+304 Not Modified – Use cached version
+
+4xx - Client Errors
+400 Bad Request – Something is wrong with your request
+401 Unauthorized – You need to log in
+403 Forbidden – You do not have permission
+404 Not Found – Page does not exist
+405 Method Not Allowed – You used the wrong HTTP method
+
+5xx - Server Errors
+500 Internal Server Error – Server crashed
+502 Bad Gateway – Server got a wrong response
+503 Service Unavailable – Server is down or busy
+504 Gateway Timeout – Took too long, server gave up
+
