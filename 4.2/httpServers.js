@@ -8,3 +8,15 @@
 // Delete = Delete request 
 // If we are using https , it means it is pointing to port 443 by default 
 // HTTPS : 443 , // HTTP : 80 . // SSH : 22 
+
+
+// initialize -> npm init -y
+// npm i express
+
+const express = require("express")
+const app = express();
+//route handler 
+app.get('/',function(req,res){
+    res.send('Hello world ')
+})
+app.listen(3001);
