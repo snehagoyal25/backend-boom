@@ -19,4 +19,5 @@ const app = express();
 app.get('/',function(req,res){
     res.send('Hello world ')
 })
-app.listen(3001);
+app.listen(3001); // which port you want to listen 
+// 127.0.0.1 = localhost 
