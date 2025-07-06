@@ -8,12 +8,20 @@
 //     }
 //   getRecentPost(); // 8️⃣ Call the function so the code actually runs
 
+// same 
+// async function fetchPosts() {
+//       const res = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+//       const json = await res.json();
+//       document.getElementById("posts").innerHTML = json.title;
+//     }
+// fetchPosts();
 
 
-    async function fetchPosts() {
-      const res = await fetch("https://jsonplaceholder.typicode.com/posts/1");
-      const json = await res.json();
-      document.getElementById("posts").innerHTML = json.title;
+// using axios 
+// linking axios main website in script tag in the fetch.html file
+   async function fetchPosts() {
+      const res = await axios.get("https://jsonplaceholder.typicode.com/posts/1");
+      document.getElementById("posts").innerHTML = res.data.title;
     }
-fetchPosts();
- 
+
+    fetchPosts();
