@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
 
-app.get("/sum",function(req,res){
-    const a = parseInt(req.query.a);
+app.get("/sum",function(req,res){  // ("sum/:a/:b") instead of /sum?a=1&b=2; we can write as /sum/1/2 
+    const a = parseInt(req.query.a);  // or Number(req.query.a)   // we have to do (req.params.a); if we are initializing like ("sum/:a/:b")
     const b = parseInt(req.query.b);
     res.json({
         sum : a+b
