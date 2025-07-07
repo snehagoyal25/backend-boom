@@ -3,10 +3,16 @@ const express = require("express");
 const app = express();
 
 let requestCount = 0;
-app.get("/sum",function(req,res){  // ("sum/:a/:b") instead of /sum?a=1&b=2; we can write as /sum/1/2 
-    // count the number of requests 
+function requestIncreaser(){
     requestCount = requestCount+1;
     console.log(`Total number of requests = ${requestCount}`)
+}
+app.get("/sum",function(req,res){  // ("sum/:a/:b") instead of /sum?a=1&b=2; we can write as /sum/1/2 
+    // count the number of requests 
+    // requestCount = requestCount+1;
+    // console.log(`Total number of requests = ${requestCount}`)
+    // or
+    requestIncreaser();
     //main logic
     const a = parseInt(req.query.a); 
     const b = parseInt(req.query.b);
@@ -16,8 +22,9 @@ app.get("/sum",function(req,res){  // ("sum/:a/:b") instead of /sum?a=1&b=2; we 
 });
 
 app.get("/subtract",function(req,res){
-    requestCount = requestCount+1;
-    console.log(`Total number of requests = ${requestCount}`)
+    // requestCount = requestCount+1;
+    // console.log(`Total number of requests = ${requestCount}`)
+    requestIncreaser();
     // main logic 
  const c = req.query.c;
  const d = req.query.d;
