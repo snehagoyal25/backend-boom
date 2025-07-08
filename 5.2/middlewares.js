@@ -1,4 +1,5 @@
 // In Express.js, middleware refers to functions that have access to the request object (req), response object (res), and the next function in the application's request-response cycle. 
+// Express is nothing but a chain of middlewares 
 const express = require("express");
 const app = express();
 
