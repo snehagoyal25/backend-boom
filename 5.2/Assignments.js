@@ -5,10 +5,7 @@ const express = require ("express");
 const app = express();
 
 function middleware(req,res,next){
-    //extra
-    // requestCount = requestCount+1;
-    // console.log(`Total number of requests = ${requestCount}`);
-    //logging = method , URL and timestamp
+//logging = method , URL and timestamp
     console.log("Method is "+req.method); // Method is GET
     console.log("URL is "+req.url);       // URL is /multiply?a=1&b=2
     console.log(new Date());              // 2025-07-10T06:09:36.370Z
