@@ -38,7 +38,11 @@ function realSumHandler(req,res){
     })
 }
 
-app.get("/sum",requestIncreaser,realSumHandler);
+app.use(requestIncreaser);
+// Initiate app.use prior to the get method as to read it.
+// app.get("/sum",requestIncreaser,realSumHandler);
+app.get("/sum",realSumHandler);
+
 
 
 
@@ -63,3 +67,4 @@ app.listen(3003);
 // Authorizing access (is the user allowed to access this?)
 // Parsing data (express.json(), express.urlencoded())
 // Handling errors
+
