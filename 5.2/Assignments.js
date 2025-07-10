@@ -7,7 +7,8 @@ const app = express();
 function middleware(req,res,next){
 //logging = method , URL and timestamp
     console.log("Method is "+req.method); // Method is GET
-    console.log("URL is "+req.url);       // URL is /multiply?a=1&b=2
+    console.log("Route is "+req.ur);       // URL is /multiply?a=1&b=2
+    console.log("Host is "+req.hostname);  // Host is localhost
     console.log(new Date());              // 2025-07-10T06:09:36.370Z
     next();
 }
@@ -48,3 +49,4 @@ app.get("/multiply",realMultiplyHandler);
 app.get("divide",realDivideHandler);
 
 app.listen(3001);
+
