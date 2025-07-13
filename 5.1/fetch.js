@@ -16,7 +16,7 @@
 //     }
 // fetchPosts();
 
-
+//Axios helps your app "talk" to a server (like getting data or sending data to/from a database).
 // using axios 
 // linking axios main website in script tag in the fetch.html file
    async function fetchPosts() {
