@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cors</title>
+    <!-- Import Axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.6/axios.min.js"></script>
+</head>
+<body>
+    <h2>Enter two numbers:</h2>
+    <input id="a" type="text" placeholder="First Value" />
+    <input id="b" type="text" placeholder="Second Value" />
+    <button onclick="sendRequest()">Find Sum</button>
+
+    <h3 id="result"></h3>
+
+    <script>
+        function sendRequest() {
+            const a = document.getElementById("a").value;
+            const b = document.getElementById("b").value;
+
+            axios.post("http://localhost:3004/sum", {
+                a: a,
+                b: b
+            })
+            .then(res => {
+                document.getElementById("result").innerText = "Answer: " + res.data.ans;
+            })
+            .catch(err => {
+                console.error(err);
+                document.getElementById("result").innerText = "Error: " + err.message;
+            });
+        }
+    </script>
+</body>
+</html>
