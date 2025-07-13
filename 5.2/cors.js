@@ -29,22 +29,3 @@
 //   origin: "http://localhost:3000" // only allow this origin
 // }));
 
-
-// assignment 
-// create a backend server in nodejs , that returns the sum endpoint 
-// Write an HTML file, that hits the backend server using the 'fetch' API .
-const express = require("express");
-
-const app = express();
-
-app.get("/sum", function(req, res) {
-    console.log(req.name);
-    const a = parseInt(req.query.a);
-    const b = parseInt(req.query.b);
-
-    res.json({
-        ans: a + b
-    })
-});
-
-app.listen(3000);

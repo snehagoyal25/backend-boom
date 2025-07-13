@@ -1,0 +1,9 @@
+Starting HTML in the server 
+ kirat = using python -> python -m SimpleHTTPServer
+
+using node
+a)npm install -g http-server
+b)Then in your project directory:
+http-server
+c)It will serve your files on:
+http://localhost:8080
