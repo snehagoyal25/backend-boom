@@ -11,3 +11,6 @@ app.use(express.json());
 // Adds it to req.body for easy use
 
 //In older versions of Express (<4.16), you had to install body-parser separately. Now, express.json() is built-in.
+
+
+add npm install jdonwebtoken

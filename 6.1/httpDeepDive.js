@@ -1,30 +1,34 @@
 // https://petal-estimate-4e9.notion.site/Authentincation-a4b43c7cc1d14535a7b5b366080095fas //s
 
 const express = require("express");
+// Importing library
+const jwt =require("jsonwebtoken");
+// Creating a global variable
+const JWT_SECRET = "randomsnehailovemumma";
 const app = express();
 app.use(express.json()); 
 
 const users=[];
+// Now using jsonwebtoken (JWT) instead of generating tokens ourselves .
+//    function generateToken() {
+//     let options = [
+//         'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+//         'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+//         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+//         'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+//         '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
+//     ];
 
-   function generateToken() {
-    let options = [
-        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-        'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
-        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-        'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
-    ];
+//     let token = "";
+//     for (let i = 0; i < 32; i++) {
+//         token += options[Math.floor(Math.random() * options.length)];
+//     }
 
-    let token = "";
-    for (let i = 0; i < 32; i++) {
-        token += options[Math.floor(Math.random() * options.length)];
-    }
+//     return token;
+// }
 
-    return token;
-}
-
-// Example usage:
-console.log(generateToken());
+// // Example usage:
+// console.log(generateToken());
 
 
 // Create two new POST routes, one for signing up and one for signing in. 
