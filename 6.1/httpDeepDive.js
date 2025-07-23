@@ -67,7 +67,7 @@ function signinHandler(req,res){
     // const token = generateToken();
     const token =jwt.sign({
         username : username
-    })
+    },JWT_SECRET)
     foundUser.token = token // This line of code not generate username and password only that is generating prior but now this line of code will gwnwrate a 32 character token as a response to the user .
     res.json({
         message : token
