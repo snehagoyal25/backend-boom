@@ -98,10 +98,13 @@ app.post("/signin",signinHandler)
 // Lets create an endpoint (/me) that returns the user their information 'only if they send their . 
 app.get("/me",function(req,res){
     const token = req.headers.token //jwt
+    const decodedInformation =jwt.verify(token,JWT_SECRET); // {username : "goyalsneha995@gmail.com"}
+    const username = decodedInformation.username;
     let foundUser = null;
 
     for(let i=0;i<users.length;i++){
-        if(users[i].token==token){
+        // if(users[i].token==token){
+         if(users[i].username==username){
             foundUser=users[i]
         }    
     }
