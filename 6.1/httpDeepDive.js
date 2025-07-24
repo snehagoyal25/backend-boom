@@ -68,7 +68,7 @@ function signinHandler(req,res){
     const token =jwt.sign({
         username : username
     },JWT_SECRET)
-    foundUser.token = token // This line of code not generate username and password only that is generating prior but now this line of code will gwnwrate a 32 character token as a response to the user .
+    // foundUser.token = token // This line of code not generate username and password only that is generating prior but now this line of code will gwnwrate a 32 character token as a response to the user .
     res.json({
         message : token
     })
@@ -97,7 +97,7 @@ app.post("/signin",signinHandler)
 
 // Lets create an endpoint (/me) that returns the user their information 'only if they send their . 
 app.get("/me",function(req,res){
-    const token = req.headers.token
+    const token = req.headers.token //jwt
     let foundUser = null;
 
     for(let i=0;i<users.length;i++){
