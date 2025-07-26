@@ -71,7 +71,7 @@ function signinHandler(req,res){
     // foundUser.token = token // This line of code not generate username and password only that is generating prior but now this line of code will gwnwrate a 32 character token as a response to the user .
     res.json({
         message : token
-    })
+    }) 
     console.log(users);
  }
  else{
@@ -99,7 +99,7 @@ app.post("/signin",signinHandler)
 app.get("/me",function(req,res){
     const token = req.headers.token //jwt
     const decodedInformation =jwt.verify(token,JWT_SECRET); // {username : "goyalsneha995@gmail.com"}
-    const unAuthDecodedinfo = jwt.decode(token,);  // {username: "goyalsneha995@gmail.com"}
+    // const unAuthDecodedinfo = jwt.decode(token,);  // {username: "goyalsneha995@gmail.com"}
     const username = decodedInformation.username;
     let foundUser = null;
 
