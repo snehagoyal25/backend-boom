@@ -113,7 +113,8 @@ app.get("/me",function(req,res){
     if(foundUser){
 res.json({
     username : foundUser.username,
-    password : foundUser.password
+    // 🚫 This is a security risk. You should never return the password — not even the hashed one.
+    // password : foundUser.password
 })
     }
     else{
