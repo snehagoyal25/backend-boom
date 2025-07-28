@@ -17,4 +17,4 @@ add npm install jsonwebtoken
 
 npm init -y
 npm install express 
-npm install jsnwebtoken
+npm install jsonwebtoken
