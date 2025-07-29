@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Front-end Auth website</title>
+    </head>
+    <!--Adding axios = It is used to send request to the backend -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
+    <script>
+        async function signup(){
+            const username = document.getElementById("signup-username").value;
+            const password = document.getElementById("signup-password").value;
+
+            await axios.post("http://localhost:3000/signup",{
+                username : username,
+                password : password
+            });
+            alert("You are signed in!!")
+        }
+    </script>
+    <body>
+        <h1>Welcome to my website</h1>
+        <div>
+            Signup
+            <input id="signup-username" type="text" name="username" placeholder="Username">
+            <input id="signup-password" type="password" name="password" placeholder="Password">
+            <button onclick="signup()">Submit</button>
+        </div>
+<br>
+        <div>
+            Signin
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="password" placeholder="Password">
+            <button onclick="signin()">Submit</button>
+        </div>
+<br>
+        <div>
+            <b>User Information :</b>
+           <div id="information"></div>
+        </div> 
+         <button onclick="logout()">Logout!</button>       
+    </body>
+</html>
