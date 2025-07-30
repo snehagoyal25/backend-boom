@@ -14,7 +14,7 @@ app.use(express.json());
 const users =[];
 
 function logger(req,res,next){
-    console.log(req.method+" request came");
+    console.log(`Request came to ${req.method}`);
     next();
 }
 
@@ -69,33 +69,54 @@ app.post("/signin",logger,function(req,res){
 
 })
 
-// function auth(req,res,next){
-    
-// }
+function auth(req,res,next){
+    const token = req.headers.token;
+    const decodedData = jwt.verify(token,JWT_SECRET)
+    if(decodedData.username){
+        req.username = decodedData.username
+ next()
+    }else{
+        res.json({
+            message:"You are not logged in!"
+        })
+    }
+   
+}
+// me endpoint do not worry about the logic as the auth middleware will check , this just needs to respond back with the username 
+app.get("/me", logger,auth, function(req, res) {
+//   const token = req.headers.token;
+//   let decodedData;
 
-app.get("/me", logger, function(req, res) {
-  const token = req.headers.token;
-  let decodedData;
+//   try {
+//     decodedData = jwt.verify(token, JWT_SECRET);
+//   } catch (err) {
+//     return res.status(403).json({ message: "Invalid or expired token" });
+//   }
 
-  try {
-    decodedData = jwt.verify(token, JWT_SECRET);
-  } catch (err) {
-    return res.status(403).json({ message: "Invalid or expired token" });
-  }
+//   const username = decodedData.username;
+//   const foundUser = users.find(user => user.username === username);
 
-  const username = decodedData.username;
-  const foundUser = users.find(user => user.username === username);
+//   if (foundUser) {
+//     res.json({
+//       username: foundUser.username
+//     });
+//   } else {
+//     res.status(401).send({
+//       message: "unauthorized user"
+//     });
+//   }
+// });
 
-  if (foundUser) {
-    res.json({
-      username: foundUser.username
-    });
-  } else {
-    res.status(401).send({
-      message: "unauthorized user"
-    });
-  }
-});
+let foundUser = null;
 
+for(leti=0;i<users.length;i++){
+    if(users[i].username===req.username){
+        foundUser=users[i]
+    }
+}
+res.json({
+    username : foundUser.username
+})
+})
 
 app.listen(3000);
