@@ -2,10 +2,11 @@
 // https://petal-estimate-4e9.notion.site/Authentincation-a4b43c7cc1d14535a7b5b366080095fas //s 
 // it says :- Can you try creating a middleware called auth that verifies if a user is logged in and ends the request early if the user isn't login .
 
+const path = require("path");
 const express = require("express")
 
 const jwt = require("jsonwebtoken")
-const JWT_SECRET = "";
+const JWT_SECRET = "sneha12345";
 
 const app = express();
 app.use(express.json());
@@ -18,11 +19,11 @@ function logger(req,res,next){
 }
 
 app.get("/",function(req,res){
-    res.sendFile(path.join(_dirname,index.html))
+    res.sendFile(path.join(__dirname,"index.html"))
 })
 
 app.post("/signup",logger,function(req,res){
-    const usernme = req.body.username;
+    const username = req.body.username;
     const password = req.body.password;
     // Checking if user already exists 
     const existingUser = users.find(user=>user.username===username);
@@ -42,15 +43,59 @@ app.post("/signup",logger,function(req,res){
 })
 
 app.post("/signin",logger,function(req,res){
+    const username = req.body.username;
+    const password = req.body.password;
+
+    let foundUser = null ;
+    for(let i=0;i<users.length;i++){
+        if(users[i].username===username && users[i].password===password){
+            foundUser = users[i];
+        }
+    } 
+
+    if(!foundUser){
+        res.json({
+            message : "User doesnot exists!"
+        })
+    }else{
+        const token =jwt.sign({
+            username
+        },JWT_SECRET);
+
+        res.json({
+            token : token
+        })
+    }
 
 })
 
-function auth(req,res,next){
+// function auth(req,res,next){
+    
+// }
 
-}
+app.get("/me", logger, function(req, res) {
+  const token = req.headers.token;
+  let decodedData;
 
-app.get("/me",logger,function(req,res){
+  try {
+    decodedData = jwt.verify(token, JWT_SECRET);
+  } catch (err) {
+    return res.status(403).json({ message: "Invalid or expired token" });
+  }
 
-})
+  const username = decodedData.username;
+  const foundUser = users.find(user => user.username === username);
+
+  if (foundUser) {
+    res.json({
+      username: foundUser.username
+    });
+  } else {
+    res.status(401).send({
+      message: "unauthorized user"
+    });
+  }
+});
+
 
 app.listen(3000);
