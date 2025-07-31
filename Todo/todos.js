@@ -1,7 +1,7 @@
 const express=require("express");
 
 const jwt = require("jsonwebtoken")
-
+const JWT_SECRET = "snehagoyal"
 
 const app = express();
 
@@ -10,8 +10,5 @@ const todos=[];
 app.get("/",function(req,res){
     res.sendFile(path.join(_dirname,"todo.html"))
 })
-<<<<<<< HEAD
-=======
 
 app.listen(3002);
->>>>>>> 8b8f83b (todo)
