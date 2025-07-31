@@ -15,11 +15,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
 <script>
     function signup(){
+        const username = document.getElementById("signup-username").value;
+        const password = document.getElementById("signup-username").value;
 
+        
     }
 
     function signin(){
-
+        const username = document.getElementById("signin-username").value;
+        const password = document.getElementById("signin-password").value;
     }
 
     function addTodo(){
@@ -29,8 +33,8 @@
 </script>
 <div>
     Signup
-    <input type="text" name="username" placeholder="Username ">
-    <input type="password" name="password" placeholder="Password">
+    <input id="signup-username" type="text" name="username" placeholder="Username ">
+    <input id="signup-password" type="password" name="password" placeholder="Password">
     <button onclick="signup()">Signup</button>
 </div>
 
@@ -38,8 +42,8 @@
 
 <div>
     Signin
-    <input type="text" name="username" placeholder="Username">
-    <input type="password" name="password" placeholder="Password">
+    <input id="signin-username" type="text" name="username" placeholder="Username">
+    <input id="signin-password" type="password" name="password" placeholder="Password">
     <button onclick="signin()">Signin</button>
 </div>
 
