@@ -1,0 +1,55 @@
+JWT: Generate, Verify, and Decode
+1. Generate (Sign) a JWT
+Creates a signed token containing user data (payload).
+
+Used after user login to provide a token to the client.
+
+Example:
+const jwt = require("jsonwebtoken");
+
+const payload = { username: "Aaru", role: "user" };
+const secretKey = "mysecret123";
+
+const token = jwt.sign(payload, secretKey, { expiresIn: "1h" });
+console.log(token);
+jwt.sign() generates a JWT.
+
+2. Verify a JWT
+Checks if the JWT is valid and not expired.
+
+Confirms the token is signed with your secret key and is not tampered with.
+
+Example:
+const token = "eyJhbGciOiJI...";
+
+try {
+    const decoded = jwt.verify(token, "mysecret123");
+    console.log(decoded); // payload if valid
+} catch (err) {
+    console.log("Invalid or expired token");
+}
+jwt.verify() verifies and returns payload if valid.
+
+3. Decode a JWT
+Reads the payload and header from the token without checking validity.
+
+It only Base64 decodes the token; it does not confirm authenticity.
+
+Example:
+const decoded = jwt.decode(token);
+console.log(decoded);
+jwt.decode() just reads the payload.
+
+⚠️ Even a fake token will decode successfully, so never use it for security checks.
+
+
+// Try and Catch 
+
+try {
+  // code that might throw an error
+  let result = riskyOperation();
+  console.log(result);
+} catch (error) {
+  // code that runs if an error happens
+  console.log("Something went wrong:", error.message);
+}
