@@ -4,6 +4,10 @@
 //If a server crashes, a new one may replace it automatically.
 
 // "Servers handle tasks and give responses(they should be stateless), but only databases keep the information stored safely even if the server stops or changes." ✅
+// npm init -y
+// npm install express mongoose
+// npm install jsonwebtoken
 
 
+const express = require("express");
 
