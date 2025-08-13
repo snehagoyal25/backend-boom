@@ -11,6 +11,13 @@
 
 const express = require("express");
 const {UserModel,TodoModel} = require("./db");
+
+const jwt = require("jsonwebtoken");
+const mongoose = require ("mongoose");
+const JWT_SECRET = "snehagoyal@2525";
+
+mongoose.connect("mongodb+srv://snehagoyal:<snehagoyal2555>@cluster0.ytr2eju.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+
 const app = express();
 app.use(express.json());
 
@@ -30,18 +37,27 @@ app.post("/signup", async function(req,res){
     })
 })
 
-app.post("/signin",function(req,res){
+app.post("/signin", async function(req,res){
     const email = req.body.email;
     const password = req.body.password;
 
-    const user = UserModel.findOne({
+    const user = await UserModel.findOne({
         email:email,
         password:password
     })
-    if(user){
-        const token = ""
-        res.json({
 
+console.log(user);
+
+    if(user){
+        const token = jwt.sign({
+             id : user._id 
+        })
+        res.json({
+            token : token
+        })
+    }else{
+        res.status(403).json({
+            message : "Incorrect credentials"
         })
     }
 })
