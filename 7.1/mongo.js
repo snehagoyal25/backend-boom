@@ -51,7 +51,7 @@ console.log(user);
     if(user){
         const token = jwt.sign({
              id : user._id 
-        })
+        },JWT_SECRET)
         res.json({
             token : token
         })
