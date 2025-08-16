@@ -27,6 +27,8 @@ app.post("/signup", async function(req,res){
     const password = req.body.password;
     const name = req.body.name;
 
+
+// we are using await as firstly it will get data in mongodb then only put the user data 
     await UserModel.create({
         email : email,
         password : password,
@@ -50,7 +52,7 @@ console.log(user);
 
     if(user){
         const token = jwt.sign({
-             id : user._id 
+             id : user._id.toString() 
         },JWT_SECRET)
         res.json({
             token : token
@@ -62,12 +64,38 @@ console.log(user);
     }
 })
 
-app.post("/todo",function(req,res){
+app.post("/todo",auth ,function(req,res){
+    const userId =  req.userId;
 
+    res.json({
+        userId:userId
+    })
 })
 
-app.get("/todos",function(req,res){
+app.get("/todos",auth ,function(req,res){
+        // req.userId 
+        const userId =  req.userId;
 
+    res.json({
+        userId:userId
+    })
 })
+
+function auth(req,res,next){
+    const token = req.headers.token;
+
+    const decodedData = jwt.verify(token,JWT_SECRET);
+
+if(decodedData){
+    req.userId = decodedData.id;
+    next();
+    }else{
+        res.status(403).json({
+            message : "Incorrect credentials "
+        })
+    }
+}
 
 app.listen(3000);
+
+// https://github.com/100xdevs-cohort-3/week-7-mongos //s
